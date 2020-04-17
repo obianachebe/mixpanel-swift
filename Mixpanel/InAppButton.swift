@@ -8,7 +8,7 @@
 
 import Foundation
 
-class InAppButton {
+open class InAppButton {
     enum PayloadKey {
         static let text = "text"
         static let textColor = "text_color"
@@ -17,11 +17,11 @@ class InAppButton {
         static let callToActionURL = "cta_url"
     }
     
-    let text: String
-    let textColor: UInt
-    let backgroundColor: UInt
-    let borderColor: UInt
-    let callToActionURL: URL?
+    public let text: String
+    public let textColor: UInt
+    public let backgroundColor: UInt
+    public let borderColor: UInt
+    public let callToActionURL: URL?
 
     init?(JSONObject: [String: Any]?) {
         guard let object = JSONObject else {
@@ -62,7 +62,7 @@ class InAppButton {
 
     }
     
-    func payload() -> [String: AnyObject] {
+    open func payload() -> [String: AnyObject] {
         var payload = [String: AnyObject]()
         payload[PayloadKey.text] = text as AnyObject
         payload[PayloadKey.textColor] = textColor as AnyObject

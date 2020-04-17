@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TakeoverNotification: InAppNotification {
+open class TakeoverNotification: InAppNotification {
     enum PayloadKey {
         static let buttons = "buttons"
         static let closeColor = "close_color"
@@ -17,11 +17,11 @@ class TakeoverNotification: InAppNotification {
         static let imageFade = "image_fade"
     }
 
-    let buttons: [InAppButton]
-    let closeButtonColor: UInt
-    var title: String? = nil
-    let titleColor: UInt
-    var shouldFadeImage: Bool = false
+    public let buttons: [InAppButton]
+    public let closeButtonColor: UInt
+    public var title: String? = nil
+    public let titleColor: UInt
+    public var shouldFadeImage: Bool = false
 
     override init?(JSONObject: [String: Any]?) {
 
@@ -73,7 +73,7 @@ class TakeoverNotification: InAppNotification {
 
     }
     
-    override func payload() -> [String : AnyObject] {
+    open override func payload() -> [String : AnyObject] {
         var payload = super.payload()
         
         payload[PayloadKey.buttons] = buttons.map({ $0.payload() }) as AnyObject

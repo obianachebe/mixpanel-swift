@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class InAppNotification {
+open class InAppNotification {
     enum PayloadKey {
         static let ID = "id"
         static let messageID = "message_id"
@@ -131,7 +131,7 @@ public class InAppNotification {
         return false
     }
     
-    func payload() -> [String: AnyObject] {
+    open func payload() -> [String: AnyObject] {
         var payload = [String: AnyObject]()
         payload[PayloadKey.ID] = ID as AnyObject
         payload[PayloadKey.messageID] = messageID as AnyObject
