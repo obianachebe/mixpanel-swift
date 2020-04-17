@@ -21,6 +21,7 @@ open class InAppButton {
     public let textColor: UInt
     public let backgroundColor: UInt
     public let borderColor: UInt
+    public let callToActionURLString: String?
     public let callToActionURL: URL?
 
     init?(JSONObject: [String: Any]?) {
@@ -51,7 +52,10 @@ open class InAppButton {
 
         var callToActionURL: URL?
         if let URLString = object[PayloadKey.callToActionURL] as? String {
+            callToActionURLString = URLString
             callToActionURL = URL(string: URLString)
+        } else {
+            callToActionURLString = nil
         }
 
         self.text               = text
@@ -68,7 +72,7 @@ open class InAppButton {
         payload[PayloadKey.textColor] = textColor as AnyObject
         payload[PayloadKey.backgroundColor] = backgroundColor as AnyObject
         payload[PayloadKey.borderColor] = borderColor as AnyObject
-        if let callToActionURLString = callToActionURL?.absoluteString {
+        if let callToActionURLString = callToActionURL?.absoluteString ?? callToActionURLString {
             payload[PayloadKey.callToActionURL] = callToActionURLString as AnyObject
         }
         return payload
