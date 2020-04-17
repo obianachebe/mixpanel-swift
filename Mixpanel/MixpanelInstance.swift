@@ -1882,13 +1882,17 @@ extension MixpanelInstance: InAppNotificationsDelegate {
         }
     }
 
-    func checkForNotifications(completion: @escaping (_ notifications: [InAppNotification]?) -> Void) {
+    open func checkForNotifications(completion: @escaping (_ notifications: [InAppNotification]?) -> Void) {
         checkDecide(forceFetch: true) { response in
             DispatchQueue.main.sync {
                 response?.toFinishVariants.forEach { $0.finish() }
             }
             completion(response?.unshownInAppNotifications)
         }
+    }
+
+    open func markNotificationShown(notification: InAppNotification) {
+        self.decideInstance.notificationsInstance.markNotificationShown(notification: notification)
     }
 
     func notificationDidShow(_ notification: InAppNotification) {

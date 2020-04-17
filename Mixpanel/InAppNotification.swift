@@ -8,7 +8,7 @@
 
 import Foundation
 
-class InAppNotification {
+open class InAppNotification {
     enum PayloadKey {
         static let ID = "id"
         static let messageID = "message_id"
