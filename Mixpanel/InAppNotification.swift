@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class InAppNotification {
+public class InAppNotification {
     enum PayloadKey {
         static let ID = "id"
         static let messageID = "message_id"
@@ -21,9 +21,9 @@ open class InAppNotification {
         static let displayTriggers = "display_triggers"
     }
     
-    let ID: Int
-    let messageID: Int
-    var imageURL: URL
+    public let ID: Int
+    public let messageID: Int
+    public var imageURL: URL
     lazy var image: Data? = {
         var data: Data?
         do {
@@ -33,12 +33,12 @@ open class InAppNotification {
         }
         return data
     }()
-    let extras: [String: Any]
-    let backgroundColor: UInt
-    let bodyColor: UInt
-    let type: String
-    var body: String? = nil
-    var displayTriggers = [DisplayTrigger]()
+    public let extras: [String: Any]
+    public let backgroundColor: UInt
+    public let bodyColor: UInt
+    public let type: String
+    public var body: String? = nil
+    public var displayTriggers = [DisplayTrigger]()
 
     init?(JSONObject: [String: Any]?) {
         guard let object = JSONObject else {

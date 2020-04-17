@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DisplayTrigger {
+public class DisplayTrigger {
     enum PayloadKey {
         static let event = "event"
         static let selector = "selector"
@@ -16,8 +16,8 @@ class DisplayTrigger {
     
     static let ANY_EVENT = "$any_event"
     
-    let event: String?
-    let selectorOpt: [String: Any]?
+    public let event: String?
+    public let selectorOpt: [String: Any]?
     
     init?(jsonObject: [String: Any]?) {
         guard let object = jsonObject else {
@@ -54,7 +54,7 @@ class DisplayTrigger {
         return false
     }
     
-    func payload() -> [String: AnyObject] {
+    open func payload() -> [String: AnyObject] {
         var payload = [String: AnyObject]()
         payload[PayloadKey.event] = event as AnyObject
         payload[PayloadKey.selector] = selectorOpt as AnyObject
