@@ -1895,7 +1895,7 @@ extension MixpanelInstance: InAppNotificationsDelegate {
         self.decideInstance.notificationsInstance.markNotificationShown(notification: notification)
     }
 
-    func notificationDidShow(_ notification: InAppNotification) {
+    open func notificationDidShow(_ notification: InAppNotification) {
         let properties: Properties = ["$campaigns": notification.ID,
                           "$notifications": [
                             "campaign_id": notification.ID,
