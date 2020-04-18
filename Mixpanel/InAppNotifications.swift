@@ -37,8 +37,10 @@ class InAppNotifications: NotificationViewControllerDelegate {
     func showNotification(event: String?, properties: InternalProperties) {
         for triggeredNotification in triggeredNotifications {
             if (triggeredNotification.matchesEvent(event: event, properties: properties)) {
-                showNotification(triggeredNotification)
-                break;
+                if !inAppNotifications.contains(where: { triggeredNotification.ID == $0.ID }) {
+                    inAppNotifications.append(triggeredNotification)
+                    break
+                }
             }
         }
     }
